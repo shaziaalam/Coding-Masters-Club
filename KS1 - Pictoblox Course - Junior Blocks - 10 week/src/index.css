@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply selection:bg-amber-200 selection:text-amber-900;
+  }
+}
+
+/* Playful Kid Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fef3c7;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb {
+  background: #f59e0b;
+  border-radius: 9999px;
+  border: 2px solid #fef3c7;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
+
+/* Junior Block Horizontal Ribbon Container */
+.jr-ribbon {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  overflow-x: auto;
+  padding: 12px 8px;
+}
+
+/* Junior Block Base */
+.jr-block-base {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 76px;
+  border-radius: 14px;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.22);
+  user-select: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  margin-right: 4px;
+  cursor: pointer;
+}
+.jr-block-base:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+.jr-block-base:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.22);
+}
+
+/* Junior Block Category Colors */
+.jr-block-trigger {
+  background: linear-gradient(180deg, #FFD54F 0%, #FFC107 100%);
+  border: 2px solid #FFA000;
+  color: #5D4037;
+}
+
+.jr-block-motion {
+  background: linear-gradient(180deg, #42A5F5 0%, #1E88E5 100%);
+  border: 2px solid #1565C0;
+  color: white;
+}
+
+.jr-block-looks {
+  background: linear-gradient(180deg, #AB47BC 0%, #8E24AA 100%);
+  border: 2px solid #6A1B9A;
+  color: white;
+}
+
+.jr-block-sound {
+  background: linear-gradient(180deg, #66BB6A 0%, #43A047 100%);
+  border: 2px solid #2E7D32;
+  color: white;
+}
+
+.jr-block-control {
+  background: linear-gradient(180deg, #FFA726 0%, #FB8C00 100%);
+  border: 2px solid #EF6C00;
+  color: white;
+}
+
+.jr-block-end {
+  background: linear-gradient(180deg, #EF5350 0%, #E53935 100%);
+  border: 2px solid #C62828;
+  color: white;
+}
+
+/* Number Parameter Badge Underneath */
+.jr-param-badge {
+  position: absolute;
+  bottom: -10px;
+  background: white;
+  color: #1f2937;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 1px 7px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  border: 1.5px solid #d1d5db;
+}
+
+/* Print Styles for Certificate */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-certificate, #printable-certificate * {
+    visibility: visible;
+  }
+  #printable-certificate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background: white !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
