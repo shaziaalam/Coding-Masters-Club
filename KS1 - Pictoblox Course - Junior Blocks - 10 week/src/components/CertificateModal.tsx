@@ -1,5 +1,5 @@
-import React from 'react';
-import { X, Printer, Award, Sparkles } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { X, Printer, Award, Sparkles, ArrowLeft } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { jrSounds } from '../utils/soundEffects';
 
@@ -20,6 +20,20 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
   schoolName,
   totalCompleted,
 }) => {
+  // Listen for Escape key to close modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        jrSounds.playPop();
+        onClose();
+      }
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const triggerConfetti = () => {
@@ -45,7 +59,15 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
   });
 
   return (
-    <div className="certificate-modal-overlay fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          jrSounds.playPop();
+          onClose();
+        }
+      }}
+      className="certificate-modal-overlay fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+    >
       <div className="certificate-modal-card bg-white rounded-3xl max-w-3xl w-full p-6 shadow-2xl relative my-8 animate-fadeIn border-4 border-amber-300">
         {/* Modal Controls (Hidden in print) */}
         <div className="no-print flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
@@ -60,9 +82,11 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
               jrSounds.playPop();
               onClose();
             }}
-            className="p-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full transition"
+            className="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl transition flex items-center gap-1.5 shadow-xs active:scale-95"
+            title="Close Certificate and return to curriculum"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
+            <span>Close</span>
           </button>
         </div>
 
@@ -167,14 +191,25 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           </div>
         </div>
 
-        {/* Footer Note */}
-        <div className="no-print mt-4 text-center">
+        {/* Footer Action Buttons */}
+        <div className="no-print mt-6 pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <button
+            onClick={() => {
+              jrSounds.playPop();
+              onClose();
+            }}
+            className="w-full sm:w-auto px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold font-['Fredoka',sans-serif] text-sm rounded-xl flex items-center justify-center gap-2 shadow-md transition transform active:scale-95"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back to Curriculum</span>
+          </button>
+
           <button
             onClick={triggerConfetti}
-            className="text-xs font-bold text-amber-800 hover:text-amber-900 flex items-center justify-center gap-1.5 mx-auto font-['Fredoka',sans-serif]"
+            className="w-full sm:w-auto px-4 py-2 bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl flex items-center justify-center gap-1.5 transition"
           >
-            <Sparkles className="w-3.5 h-3.5" />
-            Celebrate with Confetti!
+            <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+            <span>Celebrate with Confetti!</span>
           </button>
         </div>
       </div>
