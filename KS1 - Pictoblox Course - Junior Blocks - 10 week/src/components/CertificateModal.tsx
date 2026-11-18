@@ -66,9 +66,22 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           onClose();
         }
       }}
-      className="certificate-modal-overlay fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+      className="certificate-modal-overlay fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start justify-center p-3 sm:p-6 overflow-y-auto cursor-pointer"
     >
-      <div className="certificate-modal-card bg-white rounded-3xl max-w-3xl w-full p-6 shadow-2xl relative my-8 animate-fadeIn border-4 border-amber-300">
+      {/* Floating Close Button in top right of viewport - ALWAYS VISIBLE */}
+      <button
+        onClick={() => {
+          jrSounds.playPop();
+          onClose();
+        }}
+        className="no-print fixed top-3 right-3 sm:top-5 sm:right-5 z-50 px-3.5 py-2 bg-slate-900/90 hover:bg-slate-900 text-white rounded-full shadow-2xl border-2 border-slate-700 transition active:scale-95 flex items-center gap-2 font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm cursor-pointer"
+        title="Close Certificate (Esc)"
+      >
+        <X className="w-4 h-4 text-amber-300" />
+        <span>Back to Course</span>
+      </button>
+
+      <div className="certificate-modal-card bg-white rounded-3xl max-w-3xl w-full p-6 shadow-2xl relative my-4 sm:my-8 animate-fadeIn border-4 border-amber-300 cursor-default">
         {/* Modal Controls (Hidden in print) */}
         <div className="no-print flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
           <div className="flex items-center gap-2">
@@ -91,7 +104,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
         </div>
 
         {/* Inputs (Hidden in print) */}
-        <div className="no-print bg-amber-50 p-4 rounded-2xl border border-amber-200 mb-6 flex flex-col sm:flex-row gap-4 items-center">
+        <div className="no-print bg-amber-50 p-4 rounded-2xl border border-amber-200 mb-6 flex flex-col sm:flex-row gap-3 items-center">
           <div className="flex-1 w-full">
             <label className="block text-xs font-bold text-amber-950 font-['Fredoka',sans-serif] mb-1">
               Student Full Name:
@@ -105,13 +118,26 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
             />
           </div>
 
-          <button
-            onClick={handlePrint}
-            className="w-full sm:w-auto px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold font-['Fredoka',sans-serif] rounded-xl flex items-center justify-center gap-2 shadow-md transition transform active:scale-95"
-          >
-            <Printer className="w-4 h-4" />
-            Print Certificate
-          </button>
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <button
+              onClick={handlePrint}
+              className="flex-1 sm:flex-initial px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md transition transform active:scale-95"
+            >
+              <Printer className="w-4 h-4" />
+              <span>Print</span>
+            </button>
+
+            <button
+              onClick={() => {
+                jrSounds.playPop();
+                onClose();
+              }}
+              className="flex-1 sm:flex-initial px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl flex items-center justify-center gap-1.5 shadow-md transition transform active:scale-95"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back</span>
+            </button>
+          </div>
         </div>
 
         {/* PRINTABLE CERTIFICATE CARD */}
