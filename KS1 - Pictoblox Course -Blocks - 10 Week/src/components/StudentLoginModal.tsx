@@ -322,15 +322,28 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({
           </form>
         )}
 
-        {/* Guest fallback button */}
-        <div className="mt-5 pt-4 border-t border-slate-100 text-center">
-          <button
-            type="button"
-            onClick={handleGuest}
-            className="text-xs font-bold text-slate-400 hover:text-slate-600 transition font-['Fredoka',sans-serif]"
-          >
-            Continue as Guest (No Save) →
-          </button>
+        {/* Parent & Guest Explore Card */}
+        <div className="mt-5 pt-4 border-t border-slate-200">
+          <div className="bg-sky-50 border-2 border-sky-200 rounded-2xl p-3 sm:p-3.5 flex items-center justify-between gap-3 text-left">
+            <div className="flex items-center gap-2.5">
+              <span className="text-2xl shrink-0">👨‍👩‍👧</span>
+              <div>
+                <span className="font-bold text-xs font-['Fredoka',sans-serif] text-sky-950 block">
+                  Parents & Club Visitors
+                </span>
+                <span className="text-[11px] text-sky-800 font-semibold block leading-tight">
+                  Explore all 10 weeks of lessons, simulators & projects freely.
+                </span>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={handleGuest}
+              className="px-3.5 py-2 bg-sky-600 hover:bg-sky-700 active:scale-95 text-white font-bold font-['Fredoka',sans-serif] text-xs rounded-xl shadow-xs transition shrink-0 whitespace-nowrap"
+            >
+              Explore as Parent ➔
+            </button>
+          </div>
         </div>
       </div>
     </div>

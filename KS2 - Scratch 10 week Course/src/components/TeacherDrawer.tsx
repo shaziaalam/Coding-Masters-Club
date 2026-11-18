@@ -185,15 +185,26 @@ export const TeacherDrawer: React.FC<TeacherDrawerProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-slate-200 bg-slate-50 text-center">
+        <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center gap-3">
+          <button
+            onClick={() => {
+              sessionStorage.removeItem('coding_club_teacher_unlocked');
+              sounds.playPop();
+              onClose();
+            }}
+            className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl transition flex items-center justify-center gap-1.5 border border-slate-200"
+            title="Lock Teacher Mode so passcode is required again"
+          >
+            <span>🔒 Lock & Exit</span>
+          </button>
           <button
             onClick={() => {
               sounds.playPop();
               onClose();
             }}
-            className="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold font-['Fredoka',sans-serif] text-sm rounded-xl transition"
+            className="flex-1 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl transition"
           >
-            Close Tutor Panel
+            Close Guide
           </button>
         </div>
       </div>

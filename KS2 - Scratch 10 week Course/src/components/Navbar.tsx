@@ -115,18 +115,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </button>
 
-          {/* Teacher Mode Button */}
-          <button
-            onClick={() => {
-              sounds.playPop();
-              onOpenTeacher();
-            }}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl transition"
-            title="Open Teacher / Tutor Lesson Guide & Class Roster"
-          >
-            <GraduationCap className="w-4 h-4 text-amber-300" />
-            <span className="hidden xl:inline">Teacher Mode</span>
-          </button>
+          {/* Teacher Mode Button (Only visible if not logged in as a student) */}
+          {!currentUser && (
+            <button
+              onClick={() => {
+                sounds.playPop();
+                onOpenTeacher();
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl transition"
+              title="Teacher & Club Leader Access (Password Protected)"
+            >
+              <GraduationCap className="w-4 h-4 text-amber-300" />
+              <span className="hidden xl:inline">Teacher Portal</span>
+            </button>
+          )}
 
           {/* Student Profile Pill */}
           <StudentProfilePill

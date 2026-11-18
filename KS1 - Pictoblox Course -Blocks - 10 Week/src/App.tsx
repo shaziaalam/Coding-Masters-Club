@@ -7,6 +7,7 @@ import { TeacherDrawer } from './components/TeacherDrawer';
 import { PictoCheatsheetModal } from './components/PictoCheatsheetModal';
 import { CertificateModal } from './components/CertificateModal';
 import { StudentLoginModal } from './components/StudentLoginModal';
+import { TeacherPasscodeModal } from './components/TeacherPasscodeModal';
 import {
   StudentProfile,
   ProgressData,
@@ -34,8 +35,17 @@ export const App: React.FC = () => {
 
   // Modals state
   const [isTeacherOpen, setIsTeacherOpen] = useState<boolean>(false);
+  const [isTeacherPasscodeOpen, setIsTeacherPasscodeOpen] = useState<boolean>(false);
   const [isCheatsheetOpen, setIsCheatsheetOpen] = useState<boolean>(false);
   const [isCertificateOpen, setIsCertificateOpen] = useState<boolean>(false);
+
+  const handleOpenTeacher = () => {
+    if (sessionStorage.getItem('coding_club_teacher_unlocked') === 'true') {
+      setIsTeacherOpen(true);
+    } else {
+      setIsTeacherPasscodeOpen(true);
+    }
+  };
 
   const isLoadedRef = useRef<boolean>(false);
 
@@ -164,7 +174,7 @@ export const App: React.FC = () => {
         onToggleSound={handleToggleSound}
         voiceEnabled={voiceEnabled}
         onToggleVoice={handleToggleVoice}
-        onOpenTeacher={() => setIsTeacherOpen(true)}
+        onOpenTeacher={handleOpenTeacher}
         onOpenCheatsheet={() => setIsCheatsheetOpen(true)}
         onOpenCertificate={() => setIsCertificateOpen(true)}
         percentCompleted={percentCompleted}
@@ -199,6 +209,16 @@ export const App: React.FC = () => {
           onOpenCertificate={() => setIsCertificateOpen(true)}
         />
       </main>
+
+      {/* Teacher Passcode Gate Modal */}
+      <TeacherPasscodeModal
+        isOpen={isTeacherPasscodeOpen}
+        onClose={() => setIsTeacherPasscodeOpen(false)}
+        onSuccess={() => {
+          setIsTeacherPasscodeOpen(false);
+          setIsTeacherOpen(true);
+        }}
+      />
 
       {/* Teacher Guide Slide-over Drawer */}
       <TeacherDrawer
