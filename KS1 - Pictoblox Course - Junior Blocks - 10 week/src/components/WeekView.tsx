@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { JrLesson } from '../types';
 import { StepCard } from './StepCard';
 import { OopsieDetectiveCard } from './OopsieDetective';
@@ -40,6 +40,11 @@ export const WeekView: React.FC<WeekViewProps> = ({
   const [activeStepTab, setActiveStepTab] = useState<number>(0);
   const [viewAllSteps, setViewAllSteps] = useState<boolean>(false);
   const [isReadingBigIdea, setIsReadingBigIdea] = useState<boolean>(false);
+
+  // Whenever the active week changes, always default back to Step 1 (index 0)
+  useEffect(() => {
+    setActiveStepTab(0);
+  }, [lesson.week]);
 
   const weekStepKeys = lesson.steps.map((s) => `w${lesson.week}-s${s.id}`);
   const completedCount = weekStepKeys.filter((k) => completedSteps[k]).length;

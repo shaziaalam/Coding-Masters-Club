@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { KS1Lesson } from '../types';
 import { StepCard } from './StepCard';
 import { OopsieDetectiveCard } from './OopsieDetective';
@@ -40,6 +40,11 @@ export const WeekView: React.FC<WeekViewProps> = ({
   const [activeStepTab, setActiveStepTab] = useState<number>(0);
   const [viewAllSteps, setViewAllSteps] = useState<boolean>(false);
   const [isReadingBigIdea, setIsReadingBigIdea] = useState<boolean>(false);
+
+  // Whenever the active week changes, always default back to Step 1 (index 0)
+  useEffect(() => {
+    setActiveStepTab(0);
+  }, [lesson.week]);
 
   const weekStepKeys = lesson.steps.map((s) => `w${lesson.week}-s${s.id}`);
   const completedCount = weekStepKeys.filter((k) => completedSteps[k]).length;
@@ -222,21 +227,34 @@ export const WeekView: React.FC<WeekViewProps> = ({
                 Previous Step
               </button>
 
-              <button
-                disabled={activeStepTab === lesson.steps.length - 1}
-                onClick={() => {
-                  kidSounds.playPop();
-                  setActiveStepTab((prev) => Math.min(lesson.steps.length - 1, prev + 1));
-                }}
-                className={`flex items-center gap-1.5 px-5 py-2 rounded-2xl font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm transition ${
-                  activeStepTab === lesson.steps.length - 1
-                    ? 'opacity-40 cursor-not-allowed bg-slate-100 text-slate-400'
-                    : 'bg-amber-500 hover:bg-amber-600 text-white shadow-xs'
-                }`}
-              >
-                Next Step
-                <ChevronRight className="w-4 h-4" />
-              </button>
+              {activeStepTab < lesson.steps.length - 1 ? (
+                <button
+                  onClick={() => {
+                    kidSounds.playPop();
+                    setActiveStepTab((prev) => Math.min(lesson.steps.length - 1, prev + 1));
+                  }}
+                  className="flex items-center gap-1.5 px-5 py-2 rounded-2xl font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm bg-amber-500 hover:bg-amber-600 text-white shadow-xs transition"
+                >
+                  Next Step
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              ) : (
+                <button
+                  disabled={isLastWeek}
+                  onClick={() => {
+                    kidSounds.playPop();
+                    onNextWeek();
+                  }}
+                  className={`flex items-center gap-1.5 px-5 py-2 rounded-2xl font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm transition ${
+                    isLastWeek
+                      ? 'opacity-40 cursor-not-allowed bg-slate-100 text-slate-400'
+                      : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs'
+                  }`}
+                >
+                  Next Week
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              )}
             </div>
           </div>
         )}
