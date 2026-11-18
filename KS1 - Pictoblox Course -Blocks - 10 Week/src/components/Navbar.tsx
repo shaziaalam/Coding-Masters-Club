@@ -33,23 +33,23 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   return (
     <header className="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b-2 border-amber-200/90 shadow-xs">
-      <div className="max-w-6xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-3">
+      <div className="max-w-6xl mx-auto px-4 min-h-16 py-2 sm:py-2.5 flex items-center justify-between gap-3">
         {/* App Title & Shazia Alam Creator Credit */}
-        <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center text-2xl shadow-sm">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center text-xl sm:text-2xl shadow-sm">
             🐻
           </div>
-          <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <h1 className="font-['Fredoka',sans-serif] font-bold text-xl sm:text-2xl text-slate-900 leading-none">
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <h1 className="font-['Fredoka',sans-serif] font-bold text-lg sm:text-2xl text-slate-900 leading-snug">
                 Coding Master
               </h1>
-              <span className="text-[11px] sm:text-xs font-bold text-amber-900 bg-amber-100 border border-amber-300 px-2.5 py-0.5 rounded-full font-['Fredoka',sans-serif]">
+              <span className="text-[11px] sm:text-xs font-bold text-amber-900 bg-amber-100 border border-amber-300 px-2 sm:px-2.5 py-0.5 rounded-full font-['Fredoka',sans-serif] whitespace-nowrap">
                 Curriculum by Shazia Alam
               </span>
             </div>
-            <div className="flex items-center gap-2 mt-1">
-              <span className="text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.2 rounded-full font-['Fredoka',sans-serif]">
+            <div className="flex items-center gap-2 mt-0.5">
+              <span className="text-[10px] sm:text-[11px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 sm:px-2.5 py-0.5 rounded-full font-['Fredoka',sans-serif] whitespace-nowrap">
                 KS1 PictoBlox (Ages 5–7)
               </span>
               <div className="hidden lg:flex items-center gap-1.5 text-xs text-slate-500 font-bold">
@@ -67,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Quick Launch PictoBlox Web Editor */}
           <a
             href="https://pictoblox.ai/web/"
