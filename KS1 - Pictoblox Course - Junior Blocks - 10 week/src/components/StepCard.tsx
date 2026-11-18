@@ -12,6 +12,7 @@ interface StepCardProps {
   totalSteps: number;
   isCompleted: boolean;
   onToggleComplete: () => void;
+  weekNumber?: number;
 }
 
 export const StepCard: React.FC<StepCardProps> = ({
@@ -19,7 +20,8 @@ export const StepCard: React.FC<StepCardProps> = ({
   stepIndex,
   totalSteps,
   isCompleted,
-  onToggleComplete
+  onToggleComplete,
+  weekNumber = 1,
 }) => {
   const [isReading, setIsReading] = useState(false);
 
@@ -118,18 +120,14 @@ export const StepCard: React.FC<StepCardProps> = ({
         <JuniorRibbon blocks={step.blocks} />
       </div>
 
-      {/* Live Interactive Tobi Simulator */}
-      {step.simulationAction && (
-        <div className="mb-4">
-          <div className="text-xs font-bold text-sky-900 uppercase tracking-wider mb-1 font-['Fredoka',sans-serif]">
-            🎮 Interactive Simulator:
-          </div>
-          <TobiSimulator
-            actionType={step.simulationAction.type}
-            value={step.simulationAction.value}
-          />
-        </div>
-      )}
+      {/* Live Interactive Tobi Simulator (Every step has a custom simulation!) */}
+      <div className="mb-4">
+        <TobiSimulator
+          step={step}
+          weekNumber={weekNumber}
+          stepIndex={stepIndex}
+        />
+      </div>
 
       {/* Spot Check Box */}
       <div className="bg-sky-50 border-2 border-sky-200 rounded-2xl p-3.5 flex items-start gap-3 text-sky-950 text-sm mb-3">

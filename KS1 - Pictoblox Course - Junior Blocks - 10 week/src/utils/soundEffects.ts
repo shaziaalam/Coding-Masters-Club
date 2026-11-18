@@ -128,6 +128,60 @@ class JrSoundEngine {
     }
   }
 
+  // Bouncy spring boing for hops
+  public playBoing(): void {
+    if (!this.enabled) return;
+    const ctx = this.getContext();
+    if (!ctx) return;
+
+    try {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      const now = ctx.currentTime;
+      osc.frequency.setValueAtTime(220, now);
+      osc.frequency.exponentialRampToValueAtTime(560, now + 0.14);
+      osc.frequency.exponentialRampToValueAtTime(320, now + 0.24);
+
+      gain.gain.setValueAtTime(0.24, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.26);
+    } catch {
+      // Audio safety
+    }
+  }
+
+  // Soft whoosh sweep for spins and fast sprints
+  public playWhoosh(): void {
+    if (!this.enabled) return;
+    const ctx = this.getContext();
+    if (!ctx) return;
+
+    try {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      const now = ctx.currentTime;
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.exponentialRampToValueAtTime(500, now + 0.12);
+      osc.frequency.exponentialRampToValueAtTime(180, now + 0.25);
+
+      gain.gain.setValueAtTime(0.18, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.26);
+    } catch {
+      // Audio safety
+    }
+  }
+
   // Triumphant fanfare
   public playWeekComplete(): void {
     if (!this.enabled) return;

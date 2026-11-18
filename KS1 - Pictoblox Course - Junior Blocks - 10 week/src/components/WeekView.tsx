@@ -191,6 +191,7 @@ export const WeekView: React.FC<WeekViewProps> = ({
                 totalSteps={lesson.steps.length}
                 isCompleted={Boolean(completedSteps[`w${lesson.week}-s${st.id}`])}
                 onToggleComplete={() => onToggleStep(`w${lesson.week}-s${st.id}`)}
+                weekNumber={lesson.week}
               />
             ))}
           </div>
@@ -202,6 +203,7 @@ export const WeekView: React.FC<WeekViewProps> = ({
               totalSteps={lesson.steps.length}
               isCompleted={Boolean(completedSteps[`w${lesson.week}-s${lesson.steps[activeStepTab].id}`])}
               onToggleComplete={() => onToggleStep(`w${lesson.week}-s${lesson.steps[activeStepTab].id}`)}
+              weekNumber={lesson.week}
             />
 
             {/* Stepper Navigation Buttons */}
