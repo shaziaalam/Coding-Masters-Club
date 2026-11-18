@@ -112,25 +112,113 @@
   border: 1.5px solid #d1d5db;
 }
 
-/* Print Styles for Certificate */
+/* Print Styles for Certificate (Single Page Landscape, Zero Cutoff) */
 @media print {
-  body * {
-    visibility: hidden;
+  @page {
+    size: landscape;
+    margin: 8mm;
   }
-  #printable-certificate, #printable-certificate * {
-    visibility: visible;
+
+  html, body {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-  #printable-certificate {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    background: white !important;
-  }
-  .no-print {
+
+  /* Hide page header, main curriculum area, drawers, and controls */
+  header, main, nav, aside, .no-print {
     display: none !important;
+  }
+
+  /* Reset modal backdrop so it fits paper without scrolling or overlay shadows */
+  .certificate-modal-overlay {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .certificate-modal-card {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    animation: none !important;
+  }
+
+  /* Certificate layout: responsive, exactly 1 landscape sheet, zero right cutoff */
+  #printable-certificate {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 185mm !important;
+    max-height: 185mm !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    padding: 18px 30px !important;
+    border: 6px double #f59e0b !important;
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #fff7ed 100%) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-inside: avoid !important;
+    overflow: hidden !important;
+  }
+
+  #printable-certificate h1 {
+    font-size: 24pt !important;
+    line-height: 1.1 !important;
+    margin-bottom: 2px !important;
+  }
+
+  #printable-certificate .cert-student-name {
+    font-size: 26pt !important;
+    padding-bottom: 3px !important;
+    margin-bottom: 6px !important;
+  }
+
+  #printable-certificate .cert-description {
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+    margin-bottom: 8px !important;
+    max-width: 90% !important;
+  }
+
+  #printable-certificate .cert-badges {
+    margin-bottom: 8px !important;
+  }
+
+  #printable-certificate .cert-badges span {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 11pt !important;
+  }
+
+  #printable-certificate .cert-signatures {
+    padding-top: 8px !important;
+    margin-top: 4px !important;
   }
 }

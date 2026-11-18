@@ -45,8 +45,8 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
   });
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-3xl max-w-3xl w-full p-6 shadow-2xl relative my-8 animate-fadeIn border-4 border-amber-300">
+    <div className="certificate-modal-overlay fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+      <div className="certificate-modal-card bg-white rounded-3xl max-w-3xl w-full p-6 shadow-2xl relative my-8 animate-fadeIn border-4 border-amber-300">
         {/* Modal Controls (Hidden in print) */}
         <div className="no-print flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
           <div className="flex items-center gap-2">
@@ -119,7 +119,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           </p>
 
           {/* Student Name */}
-          <div className="text-3xl sm:text-4xl font-black text-indigo-700 font-['Fredoka',sans-serif] border-b-2 border-indigo-200 pb-2 mb-4 max-w-md mx-auto">
+          <div className="cert-student-name text-3xl sm:text-4xl font-black text-indigo-700 font-['Fredoka',sans-serif] border-b-2 border-indigo-200 pb-2 mb-4 max-w-md mx-auto">
             {studentName || 'Star Programmer'}
           </div>
 
@@ -127,14 +127,14 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
             🏆 Completed {totalCompleted} Learning Steps &amp; Coding Quests
           </div>
 
-          <p className="text-xs sm:text-sm text-slate-700 max-w-lg mx-auto leading-relaxed mb-6 font-medium">
+          <p className="cert-description text-xs sm:text-sm text-slate-700 max-w-lg mx-auto leading-relaxed mb-6 font-medium">
             For outstanding dedication, problem-solving, and creativity in completing the 
             <strong> 10-Week Key Stage 2 Starter Curriculum</strong>. Having mastered algorithms, sequence, loops, 
             variables, coordinate geometry, and publishing an original video game!
           </p>
 
           {/* Badge Showcase */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8 max-w-md mx-auto">
+          <div className="cert-badges flex flex-wrap justify-center gap-2 mb-8 max-w-md mx-auto">
             {['🎉', '🚀', '🛡️', '🍎', '🏆', '📡', '🦜', '📐', '🔍', '👑'].map((icon, i) => (
               <span
                 key={i}
@@ -147,7 +147,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           </div>
 
           {/* Signatures & Date */}
-          <div className="grid grid-cols-2 gap-8 max-w-md mx-auto text-xs border-t border-slate-200 pt-4 text-slate-600">
+          <div className="cert-signatures grid grid-cols-2 gap-8 max-w-md mx-auto text-xs border-t border-slate-200 pt-4 text-slate-600">
             <div>
               <div className="font-bold text-slate-800 font-['Fredoka',sans-serif] text-sm">
                 {currentDate}
