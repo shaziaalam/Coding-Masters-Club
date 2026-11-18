@@ -130,8 +130,22 @@
     print-color-adjust: exact !important;
   }
 
+  /* Reset root containers so flex layouts do not cause pagination or overflow in print */
+  #root,
+  #root > div {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+
   /* Hide page header, main curriculum area, drawers, and controls */
-  header, main, nav, aside, .no-print {
+  header, main, nav, aside, footer, .no-print {
     display: none !important;
   }
 
@@ -144,8 +158,10 @@
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
     height: auto !important;
     overflow: visible !important;
+    box-sizing: border-box !important;
   }
 
   .certificate-modal-card {
@@ -160,6 +176,7 @@
     max-width: 100% !important;
     height: auto !important;
     animation: none !important;
+    box-sizing: border-box !important;
   }
 
   /* Certificate layout: responsive, exactly 1 landscape sheet, zero right cutoff */
@@ -172,18 +189,19 @@
     top: auto !important;
     width: 100% !important;
     max-width: 100% !important;
-    height: 185mm !important;
+    min-height: 175mm !important;
     max-height: 185mm !important;
     box-sizing: border-box !important;
     margin: 0 auto !important;
-    padding: 18px 30px !important;
-    border: 6px double #f59e0b !important;
+    padding: 16px 26px !important;
+    border: 5px double #f59e0b !important;
     border-radius: 16px !important;
     background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #fff7ed 100%) !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     page-break-inside: avoid !important;
     page-break-after: avoid !important;
+    page-break-before: avoid !important;
     break-inside: avoid !important;
     overflow: hidden !important;
   }

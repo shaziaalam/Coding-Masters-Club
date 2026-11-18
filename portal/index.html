@@ -6,11 +6,11 @@
   <title>Coding Club & Coding Master — Primary School Computing Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: 'Nunito', sans-serif; }
-    h1, h2, h3, .font-heading { font-family: 'Fredoka', sans-serif; }
+    h1, h2, h3, h4, .font-heading { font-family: 'Fredoka', sans-serif; }
     .card-hover {
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
@@ -19,44 +19,75 @@
     }
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-sky-50 text-slate-800 flex flex-col selection:bg-amber-300">
+<body class="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50/50 to-sky-50 text-slate-800 flex flex-col selection:bg-amber-300">
 
-  <!-- Top Announcement Bar -->
-  <header class="bg-white/80 backdrop-blur-md border-b border-amber-200/80 sticky top-0 z-20 shadow-xs">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+  <!-- Top Announcement Header -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-amber-200/80 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center text-2xl shadow-sm">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center text-2xl shadow-sm shrink-0">
           🚀
         </div>
         <div>
-          <span class="font-heading font-bold text-lg text-slate-900 leading-none block">UK Primary Coding Club</span>
-          <span class="text-xs text-amber-700 font-semibold font-heading">Interactive 10-Week Computing Curriculums</span>
+          <span class="font-heading font-bold text-lg sm:text-xl text-slate-900 leading-none block">Primary School Coding Club</span>
+          <span class="text-xs text-amber-700 font-semibold font-heading block mt-0.5">Interactive Computing & Block Coding Curriculums</span>
         </div>
       </div>
       <div class="flex items-center gap-2">
-        <span class="hidden sm:inline-block px-3 py-1 rounded-full text-xs font-bold font-heading bg-emerald-100 text-emerald-800 border border-emerald-300">
-          ☁️ Cloud Database & Parallel Logins
+        <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold font-heading bg-emerald-100 text-emerald-850 border border-emerald-300">
+          <span>🇬🇧</span> UK Computing Curriculum
+        </span>
+        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold font-heading bg-sky-100 text-sky-850 border border-sky-300">
+          <span>🛡️</span> Child-Safe & Ad-Free
         </span>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <main class="flex-1 max-w-6xl mx-auto px-4 py-10 sm:py-14 w-full">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-xs sm:text-sm font-bold font-heading mb-4">
-        ✨ Welcome Coders & Tutors!
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-8 sm:py-12 w-full">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-xs sm:text-sm font-bold font-heading mb-4 shadow-2xs">
+        ✨ Welcome Students, Parents & Teachers!
       </div>
       <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-        Choose Your Coding Journey
+        Explore Your Child's Coding Adventure
       </h1>
-      <p class="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
-        Select a curriculum below to start your adventure. Each app tracks your progress, celebrates achievements with real sound effects, and awards official certificates!
+      <p class="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
+        Welcome to our primary school coding portal. Each interactive course features step-by-step guidance, audio "Read to Me" narration, live animated code simulators, and printable graduation certificates!
       </p>
+
+      <!-- Parent & Family Explainer Card -->
+      <div class="mt-8 bg-white/95 border-2 border-amber-300 rounded-3xl p-5 sm:p-6 shadow-md text-left flex flex-col md:flex-row items-center justify-between gap-5 transition hover:shadow-lg">
+        <div class="flex items-start gap-4">
+          <span class="text-3xl sm:text-4xl shrink-0 p-2.5 bg-amber-100 rounded-2xl">👨‍👩‍👧</span>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap mb-1">
+              <h3 class="font-heading font-bold text-base sm:text-lg text-slate-900">
+                A Note for Parents & Families
+              </h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold font-heading bg-emerald-100 text-emerald-800 border border-emerald-300">
+                Open to Browse
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+              You are welcome to follow along with what your child is learning in the club! Click any curriculum below to <strong>explore freely in Parent Preview mode</strong> — listen to the stories, test the live code simulators, and see the weekly projects. If your child has their club username and 4-digit PIN, they can log in to view their earned stars and print their certificate.
+            </p>
+          </div>
+        </div>
+        <div class="shrink-0 w-full md:w-auto">
+          <a
+            href="#courses"
+            class="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-heading font-bold text-xs sm:text-sm rounded-xl text-center shadow-xs transition active:scale-95 block whitespace-nowrap"
+          >
+            Choose a Course ↓
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- 3 Course Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+    <div id="courses" class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 scroll-mt-20">
 
       <!-- Course 1: KS2 Scratch 3.0 -->
       <div class="bg-white rounded-3xl p-6 sm:p-7 border-3 border-amber-300 shadow-xl flex flex-col justify-between card-hover relative overflow-hidden">
@@ -84,23 +115,28 @@
               <span class="text-emerald-500 font-bold">✓</span> Animated Storytelling & Broadcast Messages
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> "Catch the Apples" Arcade Game & Variables
+              <span class="text-emerald-500 font-bold">✓</span> "Catch the Apples" Arcade Game & Score Variables
             </li>
             <li class="flex items-center gap-2">
               <span class="text-emerald-500 font-bold">✓</span> Obstacle Maze Quest & Ghost Hunter Game
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> Weekly Bug Hunts & Spicy Challenges
+              <span class="text-emerald-500 font-bold">✓</span> Weekly Bug Hunts & Spicy Bonus Challenges
             </li>
           </ul>
         </div>
 
-        <a
-          href="./ks2-scratch/"
-          class="w-full py-3.5 px-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-heading font-bold text-center text-sm rounded-2xl shadow-md shadow-amber-500/30 transition transform active:scale-95 block"
-        >
-          Launch KS2 Scratch Course →
-        </a>
+        <div>
+          <a
+            href="./ks2-scratch/"
+            class="w-full py-3.5 px-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-heading font-bold text-center text-sm rounded-2xl shadow-md shadow-amber-500/30 transition transform active:scale-95 block"
+          >
+            Launch KS2 Scratch Course →
+          </a>
+          <span class="block text-center text-[11px] text-slate-400 font-bold font-heading mt-2">
+            👨‍👩‍👧 Open to explore as parent or student
+          </span>
+        </div>
       </div>
 
       <!-- Course 2: KS1 PictoBlox (Standard Blocks) -->
@@ -143,12 +179,17 @@
           </ul>
         </div>
 
-        <a
-          href="./ks1-blocks/"
-          class="w-full py-3.5 px-4 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-heading font-bold text-center text-sm rounded-2xl shadow-md shadow-orange-500/30 transition transform active:scale-95 block"
-        >
-          Launch PictoBlox Blocks →
-        </a>
+        <div>
+          <a
+            href="./ks1-blocks/"
+            class="w-full py-3.5 px-4 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-heading font-bold text-center text-sm rounded-2xl shadow-md shadow-orange-500/30 transition transform active:scale-95 block"
+          >
+            Launch PictoBlox Blocks →
+          </a>
+          <span class="block text-center text-[11px] text-slate-400 font-bold font-heading mt-2">
+            👨‍👩‍👧 Open to explore as parent or student
+          </span>
+        </div>
       </div>
 
       <!-- Course 3: KS1 PictoBlox (Junior Blocks) -->
@@ -180,54 +221,114 @@
               <span class="text-emerald-500 font-bold">✓</span> Horizontal Snap Ribbons with Number Badges
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> Interactive Live Tobi Stage Simulator
+              <span class="text-emerald-500 font-bold">✓</span> Interactive Live Tobi Stage Simulator for Every Step
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> Hopscotch, Carnival Parade & Fireworks
+              <span class="text-emerald-500 font-bold">✓</span> Hopscotch, Tree Climbing, Magic Peek-a-Boo & Bump
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> Audio "Read to Me" & Fun Pop Sounds
+              <span class="text-emerald-500 font-bold">✓</span> Audio "Read to Me" & Fun Boing/Pop Sound Effects
             </li>
           </ul>
         </div>
 
-        <a
-          href="./ks1-junior/"
-          class="w-full py-3.5 px-4 bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-heading font-bold text-center text-sm rounded-2xl shadow-md shadow-sky-500/30 transition transform active:scale-95 block"
-        >
-          Launch Junior Blocks →
-        </a>
+        <div>
+          <a
+            href="./ks1-junior/"
+            class="w-full py-3.5 px-4 bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-heading font-bold text-center text-sm rounded-2xl shadow-md shadow-sky-500/30 transition transform active:scale-95 block"
+          >
+            Launch Junior Blocks →
+          </a>
+          <span class="block text-center text-[11px] text-slate-400 font-bold font-heading mt-2">
+            👨‍👩‍👧 Open to explore as parent or student
+          </span>
+        </div>
       </div>
 
     </div>
 
-    <!-- Teacher & School Info Banner -->
-    <div class="mt-12 bg-white/90 border-2 border-indigo-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+    <!-- 3 Simple Ways Parents Can Support at Home Section -->
+    <div class="mt-14">
+      <div class="text-center mb-8">
+        <span class="text-xs uppercase tracking-wider text-amber-600 font-bold font-heading">Home Learning & Encouragement</span>
+        <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-900 mt-1">
+          3 Fun Ways to Support Your Young Coder at Home
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-3xl p-6 border-2 border-amber-200 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl shrink-0">
+            🎮
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-base text-slate-900 mb-1">
+              1. Watch the Live Simulator
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Ask your child to demonstrate each step on the interactive simulator stage. Watch Tobi hop, climb, spin, or say hello!
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border-2 border-amber-200 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl shrink-0">
+            🕵️
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-base text-slate-900 mb-1">
+              2. Solve Oopsie Detective Bugs
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Help them spot the intentional bug in the weekly Oopsie Detective challenge — debugging is one of the most vital computing skills!
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border-2 border-amber-200 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl shrink-0">
+            🏆
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-base text-slate-900 mb-1">
+              3. Celebrate Milestone Badges
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Celebrate each weekly milestone badge, and print out their official personalized <strong>Certificate of Achievement</strong> for the fridge!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Safety, Privacy & School Leadership Banner -->
+    <div class="mt-12 bg-white/95 border-2 border-indigo-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex items-start gap-4">
         <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-2xl shrink-0 mt-0.5">
-          👩‍🏫
+          🛡️
         </div>
         <div>
           <h3 class="text-lg font-bold font-heading text-slate-900 mb-1">
-            Teacher & Tutor Classroom Management
+            Child Privacy, Safety & School Safeguarding
           </h3>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
-            Every application includes a full <strong>Teacher Mode</strong> drawer with lesson timings, UK National Curriculum alignment, real-time student class rosters, PIN reset tools, and one-click CSV export.
+            This club platform is built in full compliance with UK primary school safeguarding standards. No personal email addresses, phone numbers, or contact details are collected. Student logins use anonymous usernames and secret 4-digit PINs, while teacher tools and class rosters are password-protected behind a secure teacher portal.
           </p>
         </div>
       </div>
-      <div class="shrink-0 text-center sm:text-right">
+      <div class="shrink-0 text-center sm:text-right border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-6">
         <span class="text-xs text-slate-400 font-bold block font-heading">Curriculum Design</span>
-        <span class="text-sm font-bold font-heading text-indigo-950">Shazia Alam & Coding Club</span>
+        <span class="text-sm font-bold font-heading text-indigo-950 block">Shazia Alam</span>
+        <span class="text-[11px] text-amber-700 font-semibold font-heading block mt-0.5">Primary Computing Specialist</span>
       </div>
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white/80 border-t border-slate-200 py-6 text-center text-xs text-slate-500 font-medium">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <p>© Coding Club & Coding Master • Built for Primary School Computing</p>
-      <p>Curriculum Creator (KS1 PictoBlox): <strong class="text-slate-700">Shazia Alam</strong></p>
+  <footer class="bg-white/90 border-t border-slate-200 py-6 text-center text-xs text-slate-500 font-medium mt-10">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>© Coding Club & Coding Master • Designed for Primary School Computing</p>
+      <p>Curriculum Creator (KS1 PictoBlox): <strong class="text-slate-800">Shazia Alam</strong></p>
     </div>
   </footer>
 

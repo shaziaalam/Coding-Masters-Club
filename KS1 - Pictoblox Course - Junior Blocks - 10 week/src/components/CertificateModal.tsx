@@ -82,6 +82,19 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
       </button>
 
       <div className="certificate-modal-card bg-white rounded-3xl max-w-3xl w-full p-6 shadow-2xl relative my-4 sm:my-8 animate-fadeIn border-4 border-amber-300 cursor-default">
+        {/* Prominent Corner Close Button - always visible on top right of the card */}
+        <button
+          onClick={() => {
+            jrSounds.playPop();
+            onClose();
+          }}
+          className="no-print absolute -top-3.5 -right-3.5 sm:-top-4 sm:-right-4 w-9 h-9 sm:w-10 sm:h-10 bg-slate-900 hover:bg-rose-600 text-white rounded-full shadow-xl flex items-center justify-center border-2 border-white transition transform active:scale-90 z-20 cursor-pointer"
+          title="Close Certificate (Esc)"
+          aria-label="Close Certificate"
+        >
+          <X className="w-5 h-5 text-amber-300" />
+        </button>
+
         {/* Modal Controls (Hidden in print) */}
         <div className="no-print flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
           <div className="flex items-center gap-2">
@@ -118,13 +131,14 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
             />
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
             <button
               onClick={handlePrint}
-              className="flex-1 sm:flex-initial px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md transition transform active:scale-95"
+              className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md transition transform active:scale-95 cursor-pointer"
+              title="Print official certificate (Select Landscape in printer settings for 1-page fit)"
             >
               <Printer className="w-4 h-4" />
-              <span>Print</span>
+              <span>Print Certificate</span>
             </button>
 
             <button
@@ -132,7 +146,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                 jrSounds.playPop();
                 onClose();
               }}
-              className="flex-1 sm:flex-initial px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl flex items-center justify-center gap-1.5 shadow-md transition transform active:scale-95"
+              className="w-full sm:w-auto px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl flex items-center justify-center gap-1.5 shadow-md transition transform active:scale-95 cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back</span>
