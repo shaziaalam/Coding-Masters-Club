@@ -256,6 +256,10 @@ export const App: React.FC = () => {
         appId={APP_ID}
         courseTitle="Coding Master - Junior Blocks (KS1)"
         defaultSchoolName={schoolName}
+        onOpenTeacher={() => {
+          setIsLoginOpen(false);
+          handleOpenTeacher();
+        }}
       />
     </div>
   );

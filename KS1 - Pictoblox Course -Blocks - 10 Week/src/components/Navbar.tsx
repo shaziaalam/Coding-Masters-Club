@@ -140,11 +140,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 kidSounds.playPop();
                 onOpenTeacher();
               }}
-              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3 sm:py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl transition shadow-xs"
-              title="Teacher & Club Leader Access (Password Protected)"
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3 sm:py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold font-['Fredoka',sans-serif] text-xs sm:text-sm rounded-xl transition shadow-xs cursor-pointer"
+              title="Teacher & Club Leader Access (Password Protected: 2026)"
             >
               <GraduationCap className="w-4 h-4 text-amber-400" />
-              <span className="hidden xl:inline">Teacher Portal</span>
+              <span className="hidden sm:inline">Teacher Portal</span>
             </button>
           )}
 

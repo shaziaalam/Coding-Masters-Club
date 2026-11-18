@@ -11,6 +11,7 @@ interface StudentLoginModalProps {
   appId: string;
   courseTitle: string;
   defaultSchoolName: string;
+  onOpenTeacher?: () => void;
 }
 
 const AVATARS = ['🐻', '🦁', '🚀', '🦄', '🦊', '🐼', '🐱', '🦖', '🎨', '⚽', '🎮', '⭐'];
@@ -22,6 +23,7 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({
   appId,
   courseTitle,
   defaultSchoolName,
+  onOpenTeacher,
 }) => {
   const [tab, setTab] = useState<'login' | 'register'>('login');
   const [username, setUsername] = useState('');
@@ -322,8 +324,9 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({
           </form>
         )}
 
-        {/* Parent & Guest Explore Card */}
-        <div className="mt-5 pt-4 border-t border-slate-200">
+        {/* Parent & Teacher Access Cards */}
+        <div className="mt-5 pt-4 border-t border-slate-200 space-y-2.5">
+          {/* Parent & Guest Explore Card */}
           <div className="bg-sky-50 border-2 border-sky-200 rounded-2xl p-3 sm:p-3.5 flex items-center justify-between gap-3 text-left">
             <div className="flex items-center gap-2.5">
               <span className="text-2xl shrink-0">👨‍👩‍👧</span>
@@ -339,11 +342,38 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({
             <button
               type="button"
               onClick={handleGuest}
-              className="px-3.5 py-2 bg-sky-600 hover:bg-sky-700 active:scale-95 text-white font-bold font-['Fredoka',sans-serif] text-xs rounded-xl shadow-xs transition shrink-0 whitespace-nowrap"
+              className="px-3.5 py-2 bg-sky-600 hover:bg-sky-700 active:scale-95 text-white font-bold font-['Fredoka',sans-serif] text-xs rounded-xl shadow-xs transition shrink-0 whitespace-nowrap cursor-pointer"
             >
               Explore as Parent ➔
             </button>
           </div>
+
+          {/* Teacher Portal Quick Access Card */}
+          {onOpenTeacher && (
+            <div className="bg-slate-900 text-white rounded-2xl p-3 sm:p-3.5 flex items-center justify-between gap-3 text-left shadow-sm">
+              <div className="flex items-center gap-2.5">
+                <span className="text-2xl shrink-0">👩‍🏫</span>
+                <div>
+                  <span className="font-bold text-xs font-['Fredoka',sans-serif] text-amber-300 block">
+                    Teachers & Club Leaders
+                  </span>
+                  <span className="text-[11px] text-slate-300 font-medium block leading-tight">
+                    Class rosters, PIN resets, curriculum timing & solutions.
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  sounds.playPop();
+                  onOpenTeacher();
+                }}
+                className="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 active:scale-95 text-slate-950 font-bold font-['Fredoka',sans-serif] text-xs rounded-xl shadow-xs transition shrink-0 whitespace-nowrap cursor-pointer"
+              >
+                Teacher Portal ➔
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

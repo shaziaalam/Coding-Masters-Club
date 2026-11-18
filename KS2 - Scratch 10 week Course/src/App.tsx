@@ -241,6 +241,10 @@ export const App: React.FC = () => {
         appId={APP_ID}
         courseTitle="KS2 Scratch 3.0 Coding Club"
         defaultSchoolName={schoolName}
+        onOpenTeacher={() => {
+          setIsLoginOpen(false);
+          handleOpenTeacher();
+        }}
       />
     </div>
   );
