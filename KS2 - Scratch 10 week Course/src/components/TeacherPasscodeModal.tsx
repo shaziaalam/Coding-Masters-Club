@@ -76,9 +76,7 @@ export const TeacherPasscodeModal: React.FC<TeacherPasscodeModalProps> = ({
             </label>
             <input
               type="password"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              maxLength={8}
+              maxLength={16}
               value={passcode}
               onChange={(e) => {
                 setPasscode(e.target.value);
@@ -88,6 +86,9 @@ export const TeacherPasscodeModal: React.FC<TeacherPasscodeModalProps> = ({
               autoFocus
               className="w-full px-4 py-2.5 bg-slate-50 border-2 border-slate-200 focus:border-slate-800 rounded-2xl text-center text-lg font-mono tracking-widest text-slate-900 focus:outline-none transition"
             />
+            <p className="text-[11px] text-slate-500 text-center font-medium mt-2">
+              Default passcode is <strong className="text-slate-700">2026</strong>. You can change this anytime inside the Teacher Portal under <strong>Teacher Passcode</strong>.
+            </p>
           </div>
 
           {error && (

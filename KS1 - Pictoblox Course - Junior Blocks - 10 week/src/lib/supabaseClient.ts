@@ -31,7 +31,7 @@ export const getStoredSupabaseConfig = (): SupabaseConfig | null => {
       const parsed = JSON.parse(saved);
       const url = cleanUrl(parsed.url);
       const anonKey = cleanString(parsed.anonKey);
-      if (url && anonKey && !url.includes('your-project')) {
+      if (url && anonKeyValid(anonKey) && !url.includes('your-project')) {
         return { url, anonKey };
       }
     }
@@ -47,6 +47,25 @@ export const getStoredSupabaseConfig = (): SupabaseConfig | null => {
   }
 
   return null;
+};
+
+export const hasBuiltInCloud = (): boolean => {
+  const envUrl = cleanUrl(import.meta.env.VITE_SUPABASE_URL);
+  const envKey = cleanString(import.meta.env.VITE_SUPABASE_ANON_KEY);
+  return !!(envUrl && anonKeyValid(envKey) && !envUrl.includes('your-project'));
+};
+
+export const hasCustomOverride = (): boolean => {
+  try {
+    const saved = localStorage.getItem(CONFIG_STORAGE_KEY);
+    if (!saved) return false;
+    const parsed = JSON.parse(saved);
+    const url = cleanUrl(parsed.url);
+    const anonKey = cleanString(parsed.anonKey);
+    return !!(url && anonKeyValid(anonKey) && !url.includes('your-project'));
+  } catch {
+    return false;
+  }
 };
 
 const anonKeyValid = (key: string): boolean => {
