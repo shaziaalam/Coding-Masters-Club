@@ -9,13 +9,24 @@ export interface SupabaseConfig {
 
 let supabaseInstance: SupabaseClient | null = null;
 
+const cleanString = (val?: string): string => {
+  if (!val) return '';
+  return val.trim().replace(/^["']|["']$/g, '').trim();
+};
+
+const anonKeyValid = (key: string): boolean => {
+  return typeof key === 'string' && key.length > 20;
+};
+
 export const getStoredSupabaseConfig = (): SupabaseConfig | null => {
   try {
     const saved = localStorage.getItem(CONFIG_STORAGE_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
-      if (parsed.url && parsed.anonKey) {
-        return parsed;
+      const url = cleanString(parsed.url).replace(/\/+$/, '');
+      const anonKey = cleanString(parsed.anonKey);
+      if (url && anonKey && !url.includes('your-project')) {
+        return { url, anonKey };
       }
     }
   } catch {
@@ -23,16 +34,10 @@ export const getStoredSupabaseConfig = (): SupabaseConfig | null => {
   }
 
   // Check Vite environment variables with direct static access for build-time injection
-  const envUrl = import.meta.env.VITE_SUPABASE_URL;
-  const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-  if (
-    typeof envUrl === 'string' &&
-    typeof envKey === 'string' &&
-    envUrl.trim().length > 0 &&
-    envKey.trim().length > 0 &&
-    !envUrl.includes('your-project')
-  ) {
-    return { url: envUrl.trim(), anonKey: envKey.trim() };
+  const envUrl = cleanString(import.meta.env.VITE_SUPABASE_URL).replace(/\/+$/, '');
+  const envKey = cleanString(import.meta.env.VITE_SUPABASE_ANON_KEY);
+  if (envUrl && anonKeyValid(envKey) && !envUrl.includes('your-project')) {
+    return { url: envUrl, anonKey: envKey };
   }
 
   return null;
@@ -40,7 +45,9 @@ export const getStoredSupabaseConfig = (): SupabaseConfig | null => {
 
 export const setStoredSupabaseConfig = (url: string, anonKey: string): void => {
   try {
-    localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify({ url: url.trim(), anonKey: anonKey.trim() }));
+    const cleanUrl = cleanString(url).replace(/\/+$/, '');
+    const cleanKey = cleanString(anonKey);
+    localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify({ url: cleanUrl, anonKey: cleanKey }));
     supabaseInstance = null; // Reset to force re-init
   } catch {
     // storage error
