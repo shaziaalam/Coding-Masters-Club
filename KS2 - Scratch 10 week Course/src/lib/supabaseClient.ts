@@ -14,6 +14,16 @@ const cleanString = (val?: string): string => {
   return val.trim().replace(/^["']|["']$/g, '').trim();
 };
 
+const cleanUrl = (val?: string): string => {
+  if (!val) return '';
+  return val
+    .trim()
+    .replace(/^["']|["']$/g, '')
+    .trim()
+    .replace(/\/rest\/v1\/?$/i, '')
+    .replace(/\/+$/, '');
+};
+
 const anonKeyValid = (key: string): boolean => {
   return typeof key === 'string' && key.length > 20;
 };
@@ -23,7 +33,7 @@ export const getStoredSupabaseConfig = (): SupabaseConfig | null => {
     const saved = localStorage.getItem(CONFIG_STORAGE_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
-      const url = cleanString(parsed.url).replace(/\/+$/, '');
+      const url = cleanUrl(parsed.url);
       const anonKey = cleanString(parsed.anonKey);
       if (url && anonKey && !url.includes('your-project')) {
         return { url, anonKey };
@@ -34,7 +44,7 @@ export const getStoredSupabaseConfig = (): SupabaseConfig | null => {
   }
 
   // Check Vite environment variables with direct static access for build-time injection
-  const envUrl = cleanString(import.meta.env.VITE_SUPABASE_URL).replace(/\/+$/, '');
+  const envUrl = cleanUrl(import.meta.env.VITE_SUPABASE_URL);
   const envKey = cleanString(import.meta.env.VITE_SUPABASE_ANON_KEY);
   if (envUrl && anonKeyValid(envKey) && !envUrl.includes('your-project')) {
     return { url: envUrl, anonKey: envKey };
@@ -45,9 +55,9 @@ export const getStoredSupabaseConfig = (): SupabaseConfig | null => {
 
 export const setStoredSupabaseConfig = (url: string, anonKey: string): void => {
   try {
-    const cleanUrl = cleanString(url).replace(/\/+$/, '');
-    const cleanKey = cleanString(anonKey);
-    localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify({ url: cleanUrl, anonKey: cleanKey }));
+    const sanitizedUrl = cleanUrl(url);
+    const sanitizedKey = cleanString(anonKey);
+    localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify({ url: sanitizedUrl, anonKey: sanitizedKey }));
     supabaseInstance = null; // Reset to force re-init
   } catch {
     // storage error
