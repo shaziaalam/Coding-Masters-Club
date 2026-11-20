@@ -313,7 +313,24 @@ export const TeacherClassRoster: React.FC<TeacherClassRosterProps> = ({
           </div>
         ) : filteredRoster.length === 0 ? (
           <div className="p-8 text-center text-xs text-slate-500 font-['Fredoka',sans-serif]">
-            {searchQuery ? 'No coders found matching your search.' : 'No students have logged in yet! Have students click "Coder Login" to get started.'}
+            {searchQuery ? (
+              'No coders found matching your search.'
+            ) : !cloudActive ? (
+              <div className="space-y-2 max-w-md mx-auto text-left bg-amber-50 p-4 rounded-xl border border-amber-200">
+                <div className="flex items-center gap-2 font-bold text-amber-900 text-sm">
+                  <span>⚠️</span>
+                  <span>Currently in Single-Device (Local) Mode</span>
+                </div>
+                <p className="text-slate-700 font-normal leading-relaxed">
+                  Students created on other computers or in other browser windows are not visible here because <strong>Supabase Cloud Database</strong> is not connected yet.
+                </p>
+                <p className="text-slate-600 font-normal leading-relaxed">
+                  To sync students across <strong>all classroom computers, Chromebooks, and home devices</strong>, connect your free Supabase database in the box above!
+                </p>
+              </div>
+            ) : (
+              'No students have logged in yet! Have students click "Coder Login" to get started.'
+            )}
           </div>
         ) : (
           <div className="overflow-x-auto">
