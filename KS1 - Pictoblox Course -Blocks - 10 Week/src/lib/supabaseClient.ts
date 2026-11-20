@@ -22,12 +22,17 @@ export const getStoredSupabaseConfig = (): SupabaseConfig | null => {
     // fallback
   }
 
-  // Check Vite environment variables safely
-  const metaEnv = (import.meta as unknown as { env?: Record<string, string | undefined> })?.env;
-  const envUrl = metaEnv?.VITE_SUPABASE_URL;
-  const envKey = metaEnv?.VITE_SUPABASE_ANON_KEY;
-  if (envUrl && envKey) {
-    return { url: envUrl, anonKey: envKey };
+  // Check Vite environment variables with direct static access for build-time injection
+  const envUrl = import.meta.env.VITE_SUPABASE_URL;
+  const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  if (
+    typeof envUrl === 'string' &&
+    typeof envKey === 'string' &&
+    envUrl.trim().length > 0 &&
+    envKey.trim().length > 0 &&
+    !envUrl.includes('your-project')
+  ) {
+    return { url: envUrl.trim(), anonKey: envKey.trim() };
   }
 
   return null;
